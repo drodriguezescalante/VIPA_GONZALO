@@ -1,0 +1,239 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="vipa_databaseModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="cliente">
+    <Key>
+      <PropertyRef Name="idcliente" />
+    </Key>
+    <Property Name="idcliente" Type="nvarchar" MaxLength="8" Nullable="false" />
+    <Property Name="nombrecliente" Type="nvarchar" MaxLength="60" />
+    <Property Name="nombredistrito" Type="nvarchar" MaxLength="60" />
+    <Property Name="fechacreacion" Type="date" />
+  </EntityType>
+  <EntityType Name="consejo">
+    <Key>
+      <PropertyRef Name="idconsejo" />
+    </Key>
+    <Property Name="idconsejo" Type="nvarchar" MaxLength="8" Nullable="false" />
+    <Property Name="nombreconsejo" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="urlconsejovideo" Type="nvarchar" MaxLength="255" Nullable="false" />
+  </EntityType>
+  <EntityType Name="cuentaverificada">
+    <Key>
+      <PropertyRef Name="verificacionperfil" />
+    </Key>
+    <Property Name="verificacionperfil" Type="nvarchar" MaxLength="8" Nullable="false" />
+    <Property Name="tokenverificacion" Type="nvarchar" MaxLength="10" />
+    <Property Name="estadoperfil" Type="nvarchar" MaxLength="2" />
+    <Property Name="fechacreacion" Type="datetime" />
+  </EntityType>
+  <EntityType Name="detallereporteusuariocliente">
+    <Key>
+      <PropertyRef Name="idreporte" />
+      <PropertyRef Name="idreportador" />
+      <PropertyRef Name="idtiporeporte" />
+      <PropertyRef Name="idcliente" />
+    </Key>
+    <Property Name="idreporte" Type="nvarchar" MaxLength="8" Nullable="false" />
+    <Property Name="idreportador" Type="nvarchar" MaxLength="8" Nullable="false" />
+    <Property Name="idtiporeporte" Type="int" Nullable="false" />
+    <Property Name="idcliente" Type="nvarchar" MaxLength="8" Nullable="false" />
+  </EntityType>
+  <EntityType Name="distrito">
+    <Key>
+      <PropertyRef Name="iddistrito" />
+    </Key>
+    <Property Name="iddistrito" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nombredistrito" Type="varchar" MaxLength="255" Nullable="false" />
+  </EntityType>
+  <EntityType Name="estadoperfilranking">
+    <Key>
+      <PropertyRef Name="idestadoperfil" />
+      <PropertyRef Name="nivelraking" />
+    </Key>
+    <Property Name="idestadoperfil" Type="nvarchar" MaxLength="8" Nullable="false" />
+    <Property Name="nivelraking" Type="int" Nullable="false" />
+    <Property Name="puntosactuales" Type="int" />
+    <Property Name="posicionglobalranking" Type="int" />
+  </EntityType>
+  <EntityType Name="notificacion">
+    <Key>
+      <PropertyRef Name="idnotificacion" />
+    </Key>
+    <Property Name="idnotificacion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nombrenotificacion" Type="nvarchar" MaxLength="60" />
+    <Property Name="descripcionnotificacion" Type="nvarchar" MaxLength="255" />
+    <Property Name="urlincidente" Type="nvarchar" MaxLength="255" />
+    <Property Name="repeticionnotificacion" Type="nvarchar" MaxLength="2" />
+    <Property Name="fechadespliegue" Type="datetime2" Precision="0" />
+  </EntityType>
+  <EntityType Name="preguntafrecuente">
+    <Key>
+      <PropertyRef Name="numeropregunta" />
+    </Key>
+    <Property Name="numeropregunta" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="descripcionpregunta" Type="nvarchar" MaxLength="1000" />
+    <Property Name="descripcionrespuesta" Type="nvarchar" MaxLength="1000" />
+  </EntityType>
+  <EntityType Name="rankingglobal">
+    <Key>
+      <PropertyRef Name="nivelraking" />
+    </Key>
+    <Property Name="nivelraking" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nombrenivelranking" Type="nvarchar" MaxLength="30" />
+    <Property Name="descripcionnivelranking" Type="nvarchar" MaxLength="255" />
+    <Property Name="puntosmaximos" Type="int" />
+  </EntityType>
+  <EntityType Name="reportador">
+    <Key>
+      <PropertyRef Name="idreportador" />
+    </Key>
+    <Property Name="idreportador" Type="nvarchar" MaxLength="8" Nullable="false" />
+    <Property Name="aliasusuario" Type="nvarchar" MaxLength="60" />
+    <Property Name="perfilvisible" Type="nvarchar" MaxLength="2" />
+    <Property Name="nombrereportador" Type="nvarchar" MaxLength="60" />
+    <Property Name="apellidosreportador" Type="nvarchar" MaxLength="60" />
+    <Property Name="correoreportador" Type="nvarchar" MaxLength="60" />
+    <Property Name="contraseñareportador" Type="nvarchar" MaxLength="255" />
+    <Property Name="idestadoperfil" Type="nvarchar" MaxLength="8" Nullable="false" />
+    <Property Name="verificacionperfil" Type="nvarchar" MaxLength="8" Nullable="false" />
+  </EntityType>
+  <EntityType Name="reporte">
+    <Key>
+      <PropertyRef Name="idreporte" />
+      <PropertyRef Name="idreportador" />
+      <PropertyRef Name="idtiporeporte" />
+    </Key>
+    <Property Name="idreporte" Type="nvarchar" MaxLength="8" Nullable="false" />
+    <Property Name="idreportador" Type="nvarchar" MaxLength="8" Nullable="false" />
+    <Property Name="idtiporeporte" Type="int" Nullable="false" />
+    <Property Name="idurlvideo" Type="nvarchar" MaxLength="255" />
+    <Property Name="idurlgps" Type="nvarchar" MaxLength="255" />
+    <Property Name="nombredistrito" Type="nvarchar" MaxLength="60" />
+    <Property Name="idplacavehiculo" Type="nvarchar" MaxLength="7" />
+    <Property Name="descripcionreporte" Type="nvarchar" MaxLength="255" />
+    <Property Name="estadoreporte" Type="nchar" MaxLength="10" />
+    <Property Name="fechacreacion" Type="datetime" />
+  </EntityType>
+  <EntityType Name="terminocondicion">
+    <Key>
+      <PropertyRef Name="reglaid" />
+    </Key>
+    <Property Name="reglaid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="titulo" Type="nchar" MaxLength="255" />
+    <Property Name="descripcionregla" Type="text" />
+  </EntityType>
+  <EntityType Name="tiporeporte">
+    <Key>
+      <PropertyRef Name="idtiporeporte" />
+    </Key>
+    <Property Name="idtiporeporte" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="reportenombre" Type="nvarchar" MaxLength="60" />
+    <Property Name="reporteindicador" Type="nvarchar" MaxLength="2" />
+    <Property Name="idreportepadre" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="usuarioscliente">
+    <Key>
+      <PropertyRef Name="idusuariocliente" />
+      <PropertyRef Name="idcliente" />
+    </Key>
+    <Property Name="idusuariocliente" Type="nvarchar" MaxLength="8" Nullable="false" />
+    <Property Name="idcliente" Type="nvarchar" MaxLength="8" Nullable="false" />
+    <Property Name="nombreusuariocliente" Type="nvarchar" MaxLength="60" />
+    <Property Name="correousuariocliente" Type="nvarchar" MaxLength="60" />
+    <Property Name="contraseñausuariocliente" Type="nvarchar" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="valoracionreporte">
+    <Key>
+      <PropertyRef Name="idvaloracion" />
+      <PropertyRef Name="idreporte" />
+      <PropertyRef Name="idreportador" />
+      <PropertyRef Name="idtiporeporte" />
+    </Key>
+    <Property Name="idvaloracion" Type="nvarchar" MaxLength="8" Nullable="false" />
+    <Property Name="segundotipovaloracion" Type="nvarchar" MaxLength="8" />
+    <Property Name="idreporte" Type="nvarchar" MaxLength="8" Nullable="false" />
+    <Property Name="idreportador" Type="nvarchar" MaxLength="8" Nullable="false" />
+    <Property Name="idtiporeporte" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="estadoperfilranking$fk_estadoperfilranking_rankingglobal1_idx">
+    <End Role="rankingglobal" Type="Self.rankingglobal" Multiplicity="1" />
+    <End Role="estadoperfilranking" Type="Self.estadoperfilranking" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="rankingglobal">
+        <PropertyRef Name="nivelraking" />
+      </Principal>
+      <Dependent Role="estadoperfilranking">
+        <PropertyRef Name="nivelraking" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="reportador$fk_reportador_cuentaverificada1_idx">
+    <End Role="cuentaverificada" Type="Self.cuentaverificada" Multiplicity="1" />
+    <End Role="reportador" Type="Self.reportador" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="cuentaverificada">
+        <PropertyRef Name="verificacionperfil" />
+      </Principal>
+      <Dependent Role="reportador">
+        <PropertyRef Name="verificacionperfil" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="reporte$fk_reporte_t_all_general_kind_reports1_idx">
+    <End Role="tiporeporte" Type="Self.tiporeporte" Multiplicity="1" />
+    <End Role="reporte" Type="Self.reporte" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tiporeporte">
+        <PropertyRef Name="idtiporeporte" />
+      </Principal>
+      <Dependent Role="reporte">
+        <PropertyRef Name="idtiporeporte" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="usuarioscliente$fk_usuarioscliente_cliente1_idx">
+    <End Role="cliente" Type="Self.cliente" Multiplicity="1" />
+    <End Role="usuarioscliente" Type="Self.usuarioscliente" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="cliente">
+        <PropertyRef Name="idcliente" />
+      </Principal>
+      <Dependent Role="usuarioscliente">
+        <PropertyRef Name="idcliente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="vipa_databaseModelStoreContainer">
+    <EntitySet Name="cliente" EntityType="Self.cliente" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="consejo" EntityType="Self.consejo" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="cuentaverificada" EntityType="Self.cuentaverificada" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="detallereporteusuariocliente" EntityType="Self.detallereporteusuariocliente" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="distrito" EntityType="Self.distrito" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="estadoperfilranking" EntityType="Self.estadoperfilranking" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="notificacion" EntityType="Self.notificacion" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="preguntafrecuente" EntityType="Self.preguntafrecuente" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="rankingglobal" EntityType="Self.rankingglobal" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="reportador" EntityType="Self.reportador" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="reporte" EntityType="Self.reporte" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="terminocondicion" EntityType="Self.terminocondicion" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tiporeporte" EntityType="Self.tiporeporte" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="usuarioscliente" EntityType="Self.usuarioscliente" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="valoracionreporte" EntityType="Self.valoracionreporte" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="estadoperfilranking$fk_estadoperfilranking_rankingglobal1_idx" Association="Self.estadoperfilranking$fk_estadoperfilranking_rankingglobal1_idx">
+      <End Role="rankingglobal" EntitySet="rankingglobal" />
+      <End Role="estadoperfilranking" EntitySet="estadoperfilranking" />
+    </AssociationSet>
+    <AssociationSet Name="reportador$fk_reportador_cuentaverificada1_idx" Association="Self.reportador$fk_reportador_cuentaverificada1_idx">
+      <End Role="cuentaverificada" EntitySet="cuentaverificada" />
+      <End Role="reportador" EntitySet="reportador" />
+    </AssociationSet>
+    <AssociationSet Name="reporte$fk_reporte_t_all_general_kind_reports1_idx" Association="Self.reporte$fk_reporte_t_all_general_kind_reports1_idx">
+      <End Role="tiporeporte" EntitySet="tiporeporte" />
+      <End Role="reporte" EntitySet="reporte" />
+    </AssociationSet>
+    <AssociationSet Name="usuarioscliente$fk_usuarioscliente_cliente1_idx" Association="Self.usuarioscliente$fk_usuarioscliente_cliente1_idx">
+      <End Role="cliente" EntitySet="cliente" />
+      <End Role="usuarioscliente" EntitySet="usuarioscliente" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

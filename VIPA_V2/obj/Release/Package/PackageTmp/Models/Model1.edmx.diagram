@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="12feeb8df3d14eae9c345ed4d3ac0ba4" Name="Diagram1">
+        <EntityTypeShape EntityType="vipa_databaseModel.cliente" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="vipa_databaseModel.consejo" Width="1.5" PointX="5.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="vipa_databaseModel.cuentaverificada" Width="1.5" PointX="5.75" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="vipa_databaseModel.detallereporteusuariocliente" Width="1.5" PointX="7.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="vipa_databaseModel.distrito" Width="1.5" PointX="0.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="vipa_databaseModel.estadoperfilranking" Width="1.5" PointX="8" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="vipa_databaseModel.notificacion" Width="1.5" PointX="2.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="vipa_databaseModel.preguntafrecuente" Width="1.5" PointX="9.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="vipa_databaseModel.rankingglobal" Width="1.5" PointX="5.75" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="vipa_databaseModel.reportador" Width="1.5" PointX="8" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="vipa_databaseModel.reporte" Width="1.5" PointX="3" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="vipa_databaseModel.terminocondicion" Width="1.5" PointX="10.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="vipa_databaseModel.tiporeporte" Width="1.5" PointX="0.75" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="vipa_databaseModel.usuarioscliente" Width="1.5" PointX="3" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="vipa_databaseModel.valoracionreporte" Width="1.5" PointX="10.75" PointY="3.75" IsExpanded="true" />
+        <AssociationConnector Association="vipa_databaseModel.usuarioscliente_fk_usuarioscliente_cliente1_idx" ManuallyRouted="false" />
+        <AssociationConnector Association="vipa_databaseModel.reportador_fk_reportador_cuentaverificada1_idx" ManuallyRouted="false" />
+        <AssociationConnector Association="vipa_databaseModel.estadoperfilranking_fk_estadoperfilranking_rankingglobal1_idx" ManuallyRouted="false" />
+        <AssociationConnector Association="vipa_databaseModel.reporte_fk_reporte_t_all_general_kind_reports1_idx" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

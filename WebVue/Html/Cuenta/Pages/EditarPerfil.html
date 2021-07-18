@@ -1,0 +1,162 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width">
+    <title></title>
+    <script src="http://localhost:54180/Html/Complements/header.js"></script>
+    <script src="http://localhost:54180/Html/Complements/footer.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/c3ab656616.js" crossorigin="anonymous"></script>
+    <!--SweetAlert-->
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+</head>
+<body>
+
+    <div id="header"></div>
+
+    <div id="app">
+
+        <div class="mt-4">
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">
+                    <div class="container">
+                        <div class="row m-1">
+                            <div class="col">Alias</div>
+                            <div class="col"><input class="form-control" v-model="perfil.aliasusuario" id="aliasTxt"/></div>
+                        </div>
+                    </div>
+                </li>
+                <li class="list-group-item">
+                    <div class="container">
+                        <div class="row m-1">
+                            <div class="col">Mostrar Avatar al Público</div>
+                            <div class="col">
+                                <div class="form-check form-switch">
+                                    <input class="form-check-input" type="checkbox" id="switchPerfilVisible">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li class="list-group-item">
+                    <div class="container">
+                        <div class="row m-1">
+                            <div class="col">Nombre</div>
+                            <div class="col"><input class="form-control" v-model="perfil.nombrereportador" id="nombreTxt"/></div>
+                        </div>
+                    </div>
+                </li>
+                <li class="list-group-item">
+                    <div class="container">
+                        <div class="row m-1">
+                            <div class="col">Apellidos</div>
+                            <div class="col"><input class="form-control" v-model="perfil.apellidosreportador" id="apellidosTxt"/></div>
+                        </div>
+                    </div>
+                </li>
+                <li class="list-group-item">
+                    <div class="container">
+                        <div class="row m-1">
+                            <div class="col">Email</div>
+                            <div class="col"><input class="form-control" v-model="perfil.correoreportador" id="correoTxt"/></div>
+                        </div>
+                    </div>
+                </li>
+                <li class="list-group-item">
+                    <div class="container">
+                        <div class="row m-1">
+                            <div class="col">Contraseña</div>
+                            <div class="col"><input class="form-control" id="contraseñaTxt"/></div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <div class="container mt-5">
+            <div class="row">
+                <div class="col-lg text-center">
+                    <button type="button" class="btn btn-outline-danger" @click="actualizarPerfil">Actualizar</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div id="footer"></div>
+
+    <!--SCRIPTS-->
+    <script>setHeader("editarPerfil");</script>
+
+    <!--IMPORT-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue-resource/0.6.1/vue-resource.min.js" integrity="sha512-NuUIe6TWdEivPTcxnihx2e6r2xQFEFPrJfpdZWoBwZF6G51Rphcf5r/1ZU/ytj4lyHwLd/YGMix4a5LqAN15XA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <script>
+        new Vue({
+            el: "#app",
+            data: {
+                idReportador: 'RE000001',
+                perfil: []
+            },
+            methods: {
+                fetchPerfil: function () {
+                    let url = "http://localhost:52637/api/Reportador/ObtenerPerfil?id=" + this.idReportador;
+                    this.$http.get(url).then(function (response) {
+                        this.perfil = response.data;
+                        if (this.perfil.perfilvisible == "0") { document.getElementById("switchPerfilVisible").checked = false; }
+                        else { document.getElementById("switchPerfilVisible").checked = true; }
+                    });
+                },
+                actualizarPerfil: function () {
+
+                      const swalWithBootstrapButtons = Swal.mixin({
+                      customClass: {
+                        confirmButton: 'btn btn-success',
+                        cancelButton: 'btn btn-danger'
+                      },
+                      buttonsStyling: false
+                    })
+
+                    swalWithBootstrapButtons.fire({
+                      title: '¿Está seguro de continuar?',
+                      icon: 'warning',
+                      showCancelButton: true,
+                      confirmButtonText: 'Si, actualizar.',
+                      cancelButtonText: 'Regresar',
+                      reverseButtons: true
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+
+                        if (document.getElementById("switchPerfilVisible").checked == true) { this.perfil.perfilvisible = "1"; } else { this.perfil.perfilvisible = "0"; }
+                        this.perfil.idReportador = this.idReportador;
+                        this.perfil.aliasusuario = document.getElementById("aliasTxt").value;
+                        this.perfil.nombrereportador = document.getElementById("nombreTxt").value;
+                        this.perfil.apellidosreportador = document.getElementById("apellidosTxt").value;
+                        this.perfil.correoreportador = document.getElementById("correoTxt").value;
+                        let url = "http://localhost:52637/api/Reportador/ActualizarPerfil" +
+                               "?id=" + this.perfil.idReportador +
+                                "&aliasusuario=" + this.perfil.aliasusuario +
+                                "&perfilvisible=" + this.perfil.perfilvisible +
+                                "&nombrereportador=" + this.perfil.nombrereportador +
+                                "&apellidosreportador=" + this.perfil.apellidosreportador +
+                                "&correoreportador=" + this.perfil.correoreportador;
+                          this.$http.get(url).then(function (response) {this.fetchPerfil();});
+                        swalWithBootstrapButtons.fire('Se actualizó su perfil',)
+                      }
+                    })
+                    
+                }
+            },
+            mounted: function () {
+                this.fetchPerfil();
+            }
+        })
+    </script>
+
+
+</body>
+</html>

@@ -1,0 +1,165 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="vipa_databaseModelStoreContainer" CdmEntityContainer="vipa_databaseEntities">
+    <EntitySetMapping Name="clientes">
+      <EntityTypeMapping TypeName="vipa_databaseModel.cliente">
+        <MappingFragment StoreEntitySet="cliente">
+          <ScalarProperty Name="idcliente" ColumnName="idcliente" />
+          <ScalarProperty Name="nombrecliente" ColumnName="nombrecliente" />
+          <ScalarProperty Name="nombredistrito" ColumnName="nombredistrito" />
+          <ScalarProperty Name="fechacreacion" ColumnName="fechacreacion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="consejoes">
+      <EntityTypeMapping TypeName="vipa_databaseModel.consejo">
+        <MappingFragment StoreEntitySet="consejo">
+          <ScalarProperty Name="idconsejo" ColumnName="idconsejo" />
+          <ScalarProperty Name="nombreconsejo" ColumnName="nombreconsejo" />
+          <ScalarProperty Name="urlconsejovideo" ColumnName="urlconsejovideo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="cuentaverificadas">
+      <EntityTypeMapping TypeName="vipa_databaseModel.cuentaverificada">
+        <MappingFragment StoreEntitySet="cuentaverificada">
+          <ScalarProperty Name="verificacionperfil" ColumnName="verificacionperfil" />
+          <ScalarProperty Name="tokenverificacion" ColumnName="tokenverificacion" />
+          <ScalarProperty Name="estadoperfil" ColumnName="estadoperfil" />
+          <ScalarProperty Name="fechacreacion" ColumnName="fechacreacion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="detallereporteusuarioclientes">
+      <EntityTypeMapping TypeName="vipa_databaseModel.detallereporteusuariocliente">
+        <MappingFragment StoreEntitySet="detallereporteusuariocliente">
+          <ScalarProperty Name="idreporte" ColumnName="idreporte" />
+          <ScalarProperty Name="idreportador" ColumnName="idreportador" />
+          <ScalarProperty Name="idtiporeporte" ColumnName="idtiporeporte" />
+          <ScalarProperty Name="idcliente" ColumnName="idcliente" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="distritoes">
+      <EntityTypeMapping TypeName="vipa_databaseModel.distrito">
+        <MappingFragment StoreEntitySet="distrito">
+          <ScalarProperty Name="iddistrito" ColumnName="iddistrito" />
+          <ScalarProperty Name="nombredistrito" ColumnName="nombredistrito" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="estadoperfilrankings">
+      <EntityTypeMapping TypeName="vipa_databaseModel.estadoperfilranking">
+        <MappingFragment StoreEntitySet="estadoperfilranking">
+          <ScalarProperty Name="idestadoperfil" ColumnName="idestadoperfil" />
+          <ScalarProperty Name="nivelraking" ColumnName="nivelraking" />
+          <ScalarProperty Name="puntosactuales" ColumnName="puntosactuales" />
+          <ScalarProperty Name="posicionglobalranking" ColumnName="posicionglobalranking" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="notificacions">
+      <EntityTypeMapping TypeName="vipa_databaseModel.notificacion">
+        <MappingFragment StoreEntitySet="notificacion">
+          <ScalarProperty Name="idnotificacion" ColumnName="idnotificacion" />
+          <ScalarProperty Name="nombrenotificacion" ColumnName="nombrenotificacion" />
+          <ScalarProperty Name="descripcionnotificacion" ColumnName="descripcionnotificacion" />
+          <ScalarProperty Name="urlincidente" ColumnName="urlincidente" />
+          <ScalarProperty Name="repeticionnotificacion" ColumnName="repeticionnotificacion" />
+          <ScalarProperty Name="fechadespliegue" ColumnName="fechadespliegue" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="preguntafrecuentes">
+      <EntityTypeMapping TypeName="vipa_databaseModel.preguntafrecuente">
+        <MappingFragment StoreEntitySet="preguntafrecuente">
+          <ScalarProperty Name="numeropregunta" ColumnName="numeropregunta" />
+          <ScalarProperty Name="descripcionpregunta" ColumnName="descripcionpregunta" />
+          <ScalarProperty Name="descripcionrespuesta" ColumnName="descripcionrespuesta" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="rankingglobals">
+      <EntityTypeMapping TypeName="vipa_databaseModel.rankingglobal">
+        <MappingFragment StoreEntitySet="rankingglobal">
+          <ScalarProperty Name="nivelraking" ColumnName="nivelraking" />
+          <ScalarProperty Name="nombrenivelranking" ColumnName="nombrenivelranking" />
+          <ScalarProperty Name="descripcionnivelranking" ColumnName="descripcionnivelranking" />
+          <ScalarProperty Name="puntosmaximos" ColumnName="puntosmaximos" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="reportadors">
+      <EntityTypeMapping TypeName="vipa_databaseModel.reportador">
+        <MappingFragment StoreEntitySet="reportador">
+          <ScalarProperty Name="idreportador" ColumnName="idreportador" />
+          <ScalarProperty Name="aliasusuario" ColumnName="aliasusuario" />
+          <ScalarProperty Name="perfilvisible" ColumnName="perfilvisible" />
+          <ScalarProperty Name="nombrereportador" ColumnName="nombrereportador" />
+          <ScalarProperty Name="apellidosreportador" ColumnName="apellidosreportador" />
+          <ScalarProperty Name="correoreportador" ColumnName="correoreportador" />
+          <ScalarProperty Name="contraseñareportador" ColumnName="contraseñareportador" />
+          <ScalarProperty Name="idestadoperfil" ColumnName="idestadoperfil" />
+          <ScalarProperty Name="verificacionperfil" ColumnName="verificacionperfil" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="reportes">
+      <EntityTypeMapping TypeName="vipa_databaseModel.reporte">
+        <MappingFragment StoreEntitySet="reporte">
+          <ScalarProperty Name="idreporte" ColumnName="idreporte" />
+          <ScalarProperty Name="idreportador" ColumnName="idreportador" />
+          <ScalarProperty Name="idtiporeporte" ColumnName="idtiporeporte" />
+          <ScalarProperty Name="idurlvideo" ColumnName="idurlvideo" />
+          <ScalarProperty Name="idurlgps" ColumnName="idurlgps" />
+          <ScalarProperty Name="nombredistrito" ColumnName="nombredistrito" />
+          <ScalarProperty Name="idplacavehiculo" ColumnName="idplacavehiculo" />
+          <ScalarProperty Name="descripcionreporte" ColumnName="descripcionreporte" />
+          <ScalarProperty Name="estadoreporte" ColumnName="estadoreporte" />
+          <ScalarProperty Name="fechacreacion" ColumnName="fechacreacion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="terminocondicions">
+      <EntityTypeMapping TypeName="vipa_databaseModel.terminocondicion">
+        <MappingFragment StoreEntitySet="terminocondicion">
+          <ScalarProperty Name="reglaid" ColumnName="reglaid" />
+          <ScalarProperty Name="titulo" ColumnName="titulo" />
+          <ScalarProperty Name="descripcionregla" ColumnName="descripcionregla" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tiporeportes">
+      <EntityTypeMapping TypeName="vipa_databaseModel.tiporeporte">
+        <MappingFragment StoreEntitySet="tiporeporte">
+          <ScalarProperty Name="idtiporeporte" ColumnName="idtiporeporte" />
+          <ScalarProperty Name="reportenombre" ColumnName="reportenombre" />
+          <ScalarProperty Name="reporteindicador" ColumnName="reporteindicador" />
+          <ScalarProperty Name="idreportepadre" ColumnName="idreportepadre" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="usuariosclientes">
+      <EntityTypeMapping TypeName="vipa_databaseModel.usuarioscliente">
+        <MappingFragment StoreEntitySet="usuarioscliente">
+          <ScalarProperty Name="idusuariocliente" ColumnName="idusuariocliente" />
+          <ScalarProperty Name="idcliente" ColumnName="idcliente" />
+          <ScalarProperty Name="nombreusuariocliente" ColumnName="nombreusuariocliente" />
+          <ScalarProperty Name="correousuariocliente" ColumnName="correousuariocliente" />
+          <ScalarProperty Name="contraseñausuariocliente" ColumnName="contraseñausuariocliente" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="valoracionreportes">
+      <EntityTypeMapping TypeName="vipa_databaseModel.valoracionreporte">
+        <MappingFragment StoreEntitySet="valoracionreporte">
+          <ScalarProperty Name="idvaloracion" ColumnName="idvaloracion" />
+          <ScalarProperty Name="segundotipovaloracion" ColumnName="segundotipovaloracion" />
+          <ScalarProperty Name="idreporte" ColumnName="idreporte" />
+          <ScalarProperty Name="idreportador" ColumnName="idreportador" />
+          <ScalarProperty Name="idtiporeporte" ColumnName="idtiporeporte" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

@@ -1,0 +1,111 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <!--SweetAlert-->
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <title>VIPA</title>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-danger">
+        <div class="container-fluid">
+            <a class="navbar-brand text-white" href="#"><h1>VIPA</h1></a>
+        </div>
+    </nav>
+
+    <div id="app">
+        <div class="container mt-5">
+            <div class="row">
+                <div class="input-group mt-3 mb-3">
+                    <input type="text " id="correo" class="form-control" placeholder="Correo" aria-label="" aria-describedby="basic-addon1">
+                </div>
+                <div class="input-group mt-3 mb-3">
+                    <input type="text " id="nombres" class="form-control" placeholder="Nombres" aria-label="" aria-describedby="basic-addon1">
+                </div>
+                <div class="input-group mt-3 mb-3">
+                    <input type="text " id="apellidos" class="form-control" placeholder="Apellidos" aria-label="" aria-describedby="basic-addon1">
+                </div>
+                <div class="input-group mt-3 mb-3">
+                    <input type="text " id="alias" class="form-control" placeholder="Alias" aria-label="" aria-describedby="basic-addon1">
+                </div>
+                <div class="input-group mt-3 mb-3">
+                    <input type="text " id="contrasenia" class="form-control" placeholder="Contraseña" aria-label="" aria-describedby="basic-addon1">
+                </div>
+                <div class="input-group mt-3 mb-5">
+                    <input type="text " id="recontrasenia" class="form-control" placeholder="Vuelva a Ingresar la Contraseña" aria-label="" aria-describedby="basic-addon1">
+                </div>
+                <button @click="enviar" type="button" class="btn btn-danger mt-3 mb-5">Enviar</button>
+
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Optional JavaScript; choose one of the two! -->
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+    <!-- Option 2: Separate Popper and Bootstrap JS -->
+    <!--
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+    -->
+    <!--IMPORT-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue-resource/0.6.1/vue-resource.min.js" integrity="sha512-NuUIe6TWdEivPTcxnihx2e6r2xQFEFPrJfpdZWoBwZF6G51Rphcf5r/1ZU/ytj4lyHwLd/YGMix4a5LqAN15XA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <script>
+        new Vue({
+            el: "#app",
+            data:
+            {
+                perfil: []
+            },
+            methods:
+            {
+                enviar: function () {
+                    var correo = document.getElementById("correo").value;
+                    var nombres = document.getElementById("nombres").value;
+                    var apellidos = document.getElementById("apellidos").value;
+                    var alias = document.getElementById("alias").value;
+                    var contrasenia = document.getElementById("contrasenia").value;
+                    var recontrasenia = document.getElementById("recontrasenia").value;
+                  
+                    if (correo == "") { Swal.fire('Debe completar el campo correo'); }
+                    else if (nombres == "") { Swal.fire('Debe completar su nombre.'); }
+                    else if (apellidos == "") { Swal.fire('Debe completar sus apellidos'); }
+                    else if (alias == "") { Swal.fire('Debe completar su alias'); }
+                    else if (contrasenia == "") { Swal.fire('Debe introducir una contraseña'); }
+                    else if (recontrasenia == "") { Swal.fire('Debe completar con la contraseña introducida anteriormente'); }
+                    else if (contrasenia != recontrasenia) { Swal.fire('Las contraseñas no son iguales'); }
+                    else {
+                        let url = "http://localhost:52637/api/Reportador/RegistroReportador?aliasusuario=" + alias + "&nombrereportador=" + nombres + "&apellidosreportador=" + apellidos + "&correoreportador=" + correo + "&contraseniareportador=" + recontrasenia;
+                        this.$http.get(url).then(function (response) {
+                            Swal.fire('Se creó su código de verificación.');
+                            console.log(response.data);
+                            window.location.href = "http://localhost:54180/Html/Principal.html";
+                        })
+
+                    }
+
+                    
+                }
+                    
+                
+            },
+            mounted: function () {
+
+            }
+        })
+    </script>
+
+</body>
+</html>
